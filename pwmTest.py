@@ -25,7 +25,7 @@ class motor():
             self.pi.set_servo_pulsewidth(17, degree)
             print degree
 
-    """Sweeps Motors"""
+    """Sweeps Motors by Alternating <[1000, 2000], [2000,1000]>"""
     def motor_sweep(self):
         while True:
             self.sweepUp()
