@@ -13,18 +13,23 @@ class motor():
         self.pi.set_mode(17, pigpio.OUTPUT)  # GPIO 17 as output
         print "Set Pins"
 
+    """Sweeps Motors from 1000-2000"""
+    def sweepUp(self):
+        for degree in xrange(1000, 2000, 1):
+            self.pi.set_servo_pulsewidth(17, degree)
+            print degree
 
-    """Sweeos Motors from 1000-2000"""
+    """Sweeps Motors from 2000-1000"""
+    def sweepDown(self):
+        for degree in xrange(2000, 1000, -1):
+            self.pi.set_servo_pulsewidth(17, degree)
+            print degree
+
+    """Sweeps Motors"""
     def motor_sweep(self):
         while True:
-            for degree in xrange(1000, 2000, 1):
-                self.pi.set_servo_pulsewidth(17, degree)
-                print degree
-            for degree in xrange(2000, 1000, -1):
-                self.pi.set_servo_pulsewidth(17, degree)
-                print degree
-
-
+            self.sweepUp()
+            self.sweepDown()
 
 
     def main(self):
