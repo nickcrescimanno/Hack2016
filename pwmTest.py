@@ -5,25 +5,26 @@ import pigpio
 class motor():
 
     pause_time = .01
+    pin=17
     pi=1
 
     def __init__(self):
         print "STARTING"
         self.pi = pigpio.pi()  # connect to local Pi
-        self.pi.set_mode(17, pigpio.OUTPUT)  # GPIO 17 as output
+        self.pi.set_mode(self.pin, pigpio.OUTPUT)  # GPIO 17 as output
         print "Set Pins"
 
     """Sweeps Motors from 1000-2000"""
     def sweepUp(self):
         for degree in xrange(1000, 2000, 1):
-            self.pi.set_servo_pulsewidth(17, degree)
+            self.pi.set_servo_pulsewidth(self.pin, degree)
             time.sleep(self.pause_time)
             print degree
 
     """Sweeps Motors from 2000-1000"""
     def sweepDown(self):
         for degree in xrange(2000, 1000, -1):
-            self.pi.set_servo_pulsewidth(17, degree)
+            self.pi.set_servo_pulsewidth(self.pin, degree)
             time.sleep(self.pause_time)
             print degree
 
