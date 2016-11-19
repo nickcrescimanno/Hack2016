@@ -15,7 +15,7 @@ class motor():
 
 
     """Sweeos Motors from 1000-2000"""
-    def func(self):
+    def motor_sweep(self):
         while True:
             for degree in xrange(1000, 2000, 1):
                 self.pi.set_servo_pulsewidth(17, degree)
@@ -32,6 +32,6 @@ class motor():
 
 
 a = motor()
-a.func()
+a.motor_sweep()
 a.main()
 
