@@ -17,12 +17,14 @@ class motor():
     def sweepUp(self):
         for degree in xrange(1000, 2000, 1):
             self.pi.set_servo_pulsewidth(17, degree)
+            time.sleep(self.pause_time)
             print degree
 
     """Sweeps Motors from 2000-1000"""
     def sweepDown(self):
         for degree in xrange(2000, 1000, -1):
             self.pi.set_servo_pulsewidth(17, degree)
+            time.sleep(self.pause_time)
             print degree
 
     """Sweeps Motors by Alternating <[1000, 2000], [2000,1000]>"""
