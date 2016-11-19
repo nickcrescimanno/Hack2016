@@ -4,7 +4,7 @@ import pigpio
 
 class motor():
 
-    pause_time = .1
+    pause_time = .01
     pi=1
 
     def __init__(self):
