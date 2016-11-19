@@ -33,12 +33,7 @@ class motor():
             self.sweepUp()
             self.sweepDown()
 
-
-    def main(self):
-        self.pi.set_servo_pulsewidth(17, 1500) # centre
-
-
 a = motor()
 a.motor_sweep()
-a.main()
+
 
