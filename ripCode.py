@@ -280,15 +280,13 @@ def calibrateMPU6050(dest1, dest2):
             mask_bit[i] = 0x01  # If temperature compensation bit is set, record that fact in mask_bit
 
     # Construct total accelerometer bias, including calculated average accelerometer bias from above
-    accel_bias_reg[0] -= (
-        accel_bias[0] / 8)  # Subtract calculated averaged accelerometer bias scaled to 2048 LSB/g (16 g full scale)
+    accel_bias_reg[0] -= (accel_bias[0] / 8)  # Subtract calculated averaged accelerometer bias scaled to 2048 LSB/g (16 g full scale)
     accel_bias_reg[1] -= (accel_bias[1] / 8)
     accel_bias_reg[2] -= (accel_bias[2] / 8)
 
     data[0] = (accel_bias_reg[0] >> 8) & 0xFF
     data[1] = (accel_bias_reg[0]) & 0xFF
-    data[1] = data[1] | mask_bit[
-        0]  # preserve temperature compensation bit when writing back to accelerometer bias registers
+    data[1] = data[1] | mask_bit[0]  # preserve temperature compensation bit when writing back to accelerometer bias registers
     data[2] = (accel_bias_reg[1] >> 8) & 0xFF
     data[3] = (accel_bias_reg[1]) & 0xFF
     data[3] = data[3] | mask_bit[
