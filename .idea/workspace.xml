@@ -112,8 +112,8 @@
       <file leaf-file-name="i2c_ADXL345.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/i2c_ADXL345.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+            <state relative-caret-position="510">
+              <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
               <folding>
                 <element signature="e#69#84#0" expanded="true" />
               </folding>
@@ -611,8 +611,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/i2c_ADXL345.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        <state relative-caret-position="510">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
           <folding>
             <element signature="e#69#84#0" expanded="true" />
           </folding>
