@@ -35,7 +35,7 @@ def main():
     h = pi.i2c_open(BUS, ADXL345_I2C_ADDR)
 
     if h >= 0:  # Connected OK?
-
+        h.
         # Initialise ADXL345.
         pi.i2c_write_byte_data(h, 0x6B, 0)  # wake up mpu6050
         # pi.i2c_write_byte_data(h, 0x2d, 8)  # wake up mpu6050

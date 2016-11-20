@@ -75,13 +75,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="i2c_ADXL345.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="i2c_ADXL345.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/i2c_ADXL345.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            <state relative-caret-position="387">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="61" />
               <folding>
                 <element signature="e#69#84#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ripCode.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ripCode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="138" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,21 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="udptest2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/udptest2.py">
+      <file leaf-file-name="calc.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/calc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -154,6 +156,9 @@
         <option value="$PROJECT_DIR$/Exp.py" />
         <option value="$PROJECT_DIR$/TESTERR.py" />
         <option value="$PROJECT_DIR$/i2c_ADXL345.py" />
+        <option value="$PROJECT_DIR$/ripCode" />
+        <option value="$PROJECT_DIR$/ripCode.py" />
+        <option value="$PROJECT_DIR$/calc.py" />
       </list>
     </option>
   </component>
@@ -563,6 +568,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Exp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -581,23 +596,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Exp.py">
+    <entry file="file://$PROJECT_DIR$/i2c_ADXL345.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="387">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="61" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#69#84#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/i2c_ADXL345.py">
+    <entry file="file://$PROJECT_DIR$/ripCode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="157">
+          <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="138" selection-end-column="14" />
           <folding>
-            <element signature="e#69#84#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
