@@ -2,6 +2,8 @@ from calc import calc
 import pigpio
 import time
 
+gyroBias=[]
+accelBias=[]
 XGOFFS_TC = 0x00  # Bit 7 PWR_MODE, bits 6:1 XG_OFFS_TC, bit 0 OTP_BNK_VLD
 YGOFFS_TC = 0x01
 ZGOFFS_TC = 0x02
@@ -349,4 +351,11 @@ def calibrateMPU6050(dest1, dest2):
             destination.append(100.0 + 100.0 * 1.0 * (selfTest[i] - factoryTrim[i]) / factoryTrim[i])  # Report percent differences
 
 
-calibrateMPU6050()
+
+aRes = 2.0/326768.0
+calibrateMPU6050(gyroBias, accelBias)
+while True:
+    vals = readBytes(0x3B, 6)
+    for i in range(len(vals)):
+        print vals[i]*aRes-accelBias[i]
+
