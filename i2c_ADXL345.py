@@ -41,17 +41,18 @@ if h >= 0:  # Connected OK?
 
         if s >= 0:
             # print binascii.hexlify(b)
-            (z) = struct.unpack('h', buffer(b))
+            #(z) = struct.unpack('h', buffer(b))
             # (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
             # print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
-            print("z:{}".format(z))
-
-        else:
-            print "WE GOT AN ERROR"
-        a=(b[0] <<8)  +  b[1]
+            #print("z:{}".format(z))
+        #else:
+         #   print "WE GOT AN ERROR"
+        
+	a=(b[0] <<8)  +  b[1]
+        if a >= 2**15:
+	    a = 2**15 -a+1 #bit shi	
         print type(a)
         a = a / 16384.0
-        print type(a)
         print a
 
         time.sleep(.2)
