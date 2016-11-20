@@ -25,6 +25,8 @@ h = pi.i2c_open(1, ADXL345_I2C_ADDR)
     bit[1]
 """
 def getVal(first, second):
+    print first
+    print second
     val = (first << 8) + second
     if val >= 2 ** 15:
         val = val - 2 ** 16 - 1  # bit shi
