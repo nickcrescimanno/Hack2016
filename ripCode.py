@@ -365,6 +365,5 @@ aRes = 2.0/326768.0
 calibrateMPU6050(gyroBias, accelBias)
 while True:
     vals = readBytes(0x3B, 6, 1)
-    for i in range(len(vals)):
-        print vals[i]-accelBias[i]
+    print vals[2]-accelBias[2], vals[2]-accelBias[2], vals[2]-accelBias[2]
 
