@@ -85,12 +85,15 @@ class plane():
             self.throttleDown()
 
     def updateControls(self, yaw, pitch, throttle):
-        yawOut = 1500 + yaw * self.RANGE
-        pitchOut = 1500 + pitch * self.RANGE
-        throttleOut = 1000 + throttle * self.THROTTLE_RANGE
-        self.pi.set_servo_pulsewidth(self.YAW, yawOut)
-        self.pi.set_servo_pulsewidth(self.PITCH, pitchOut)
-        self.pi.set_servo_pulsewidth(self.THROTTLE, throttleOut)
+        yawOut = 1500 + yaw * self.RANGE / 4
+        pitchOut = 1500 + pitch * self.RANGE / 4
+        throttleOut = 1000 + throttle * self.THROTTLE_RANGE / 4
+
+        for i in range(4):
+            self.pi.set_servo_pulsewidth(self.YAW, yawOut)
+            self.pi.set_servo_pulsewidth(self.PITCH, pitchOut)
+            self.pi.set_servo_pulsewidth(self.THROTTLE, throttleOut)
+            (yawOut, pitchOut, throttleOut) = (4 * yawOut, 4 * pitchOut, 4 * throttleOut)
 
 
 aero = plane()
