@@ -61,14 +61,14 @@ class plane():
                 print z
                 # self.stableZAccel(z)
                 yaw, pitch, throttle, d = a.poll()
-                self.yawOut = 1500 + yaw * self.RANGE
-                self.pitchOut = 1500 + pitch * self.RANGE
-                self.throttleOut = 1000 + throttle * self.THROTTLE_RANGE
-                self.updateControls(self.yawOut, self.pitchOut, self.throttleOut)
+                yawOut = 1500 + yaw * self.RANGE
+                pitchOut = 1500 + pitch * self.RANGE
+                throttleOut = 1000 + throttle * self.THROTTLE_RANGE
+                self.updateControls(yawOut, pitchOut, throttleOut)
                 print yaw, pitch, throttle, d
                 # self.stableZAccel(y)
                 # self.stableZAccel(x)
-                time.sleep(.01)
+                time.sleep(.001)
                 #self.incrementControls(yaw, pitch, throttle)
 
         a.close()
