@@ -50,6 +50,7 @@ class plane():
     """Adjusts Servo to Degree specified by user"""
     def test(self):
         while True:
+            print "!"
             pos = self.readBytes(0x3B, 6, 1)
             (z, y, x) = (pos[0], pos[1], pos[2])
             print z
