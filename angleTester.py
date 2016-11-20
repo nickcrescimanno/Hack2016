@@ -6,6 +6,6 @@ def test():
     pi.set_mode(17, pigpio.OUTPUT)  # GPIO 17 as output
     while True:
         degree = input('DEGREE: ')
-        pi.set_servo_pulsewidth(17, degree)
+        pi.set_servo_pulsewidth(input("ENTER PIN"), degree)
 
 test();

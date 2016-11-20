@@ -360,7 +360,7 @@ def calibrateMPU6050(dest1, dest2):
             destination.append(100.0 + 100.0 * 1.0 * (selfTest[i] - factoryTrim[i]) / factoryTrim[i])  # Report percent differences
 
 
-
+level = 1.15
 aRes = 2.0/326768.0
 calibrateMPU6050(gyroBias, accelBias)
 while True:
