@@ -49,6 +49,7 @@ if h >= 0:  # Connected OK?
         else:
             print "WE GOT AN ERROR"
         a=(b[0] <<8)  +  b[1]
+        print type(a)
         a = a / 16384.0
         print type(a)
         print a
