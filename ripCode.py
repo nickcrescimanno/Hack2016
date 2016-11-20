@@ -204,7 +204,7 @@ def calibrateMPU6050(dest1, dest2):
 
     # At end of sample accumulation, turn off FIFO sensor read
     writeByte(FIFO_EN, 0x00)  # Disable gyro and accelerometer sensors for FIFO
-    fifo_count = readBytes(FIFO_COUNTH, 2)[0] # read FIFO sample count
+    fifo_count = readBytes(FIFO_COUNTH, 2, 0)[0] # read FIFO sample count
     packet_count = fifo_count / 12  # How many sets of full gyro and accelerometer data for averaging
     print packet_count
     print fifo_count
@@ -212,7 +212,7 @@ def calibrateMPU6050(dest1, dest2):
     for i in xrange(packet_count):
         accel_temp = [0, 0, 0]
         gyro_temp = [0, 0, 0]
-        data = readBytes(FIFO_R_W, 12)  # read data for averaging
+        data = readBytes(FIFO_R_W, 12, 1)  # read data for averaging
         for x in xrange(3):
             accel_temp[x] = data[x]
         for x in xrange(3, 5, 3):
@@ -265,11 +265,11 @@ def calibrateMPU6050(dest1, dest2):
     # the accelerometer biases calculated above must be divided by 8.
 
     accel_bias_reg = [0, 0, 0]  # A place to hold the factory accelerometer trim biases
-    data = readBytes(XA_OFFSET_H, 2)  # Read factory accelerometer trim values
+    data = readBytes(XA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
     accel_bias_reg[0] = data[0]
-    data = readBytes(YA_OFFSET_H, 2)  # Read factory accelerometer trim values
+    data = readBytes(YA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
     accel_bias_reg[1] = data[0]
-    data = readBytes(ZA_OFFSET_H, 2)  # Read factory accelerometer trim values
+    data = readBytes(ZA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
     accel_bias_reg[2] = data[0]
 
     mask_bit = [0, 0, 0]  # Define array to hold mask bit for each accelerometer bias axis
@@ -364,7 +364,7 @@ def calibrateMPU6050(dest1, dest2):
 aRes = 2.0/326768.0
 calibrateMPU6050(gyroBias, accelBias)
 while True:
-    vals = readBytes(0x3B, 6)
+    vals = readBytes(0x3B, 6, 1)
     for i in range(len(vals)):
         print vals[i]*aRes-accelBias[i]
 
