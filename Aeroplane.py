@@ -52,18 +52,24 @@ class plane():
     """Adjusts Servo to Degree specified by user"""
 
     def test(self):
+        a = ControllerInput()
         while True:
             print "!"
             pos = self.readBytes(0x3B, 6, 1)
             (z, y, x) = (pos[0], pos[1], pos[2])
             print z
+<<<<<<< HEAD
             # self.stableZAccel(z)
+=======
+            # self.stableZAccel(z)            
+>>>>>>> 33dd4f8cd5b8db5a780fbadff56f963cd3493db0
             yaw, pitch, throttle, d = a.poll()
             # self.updateControls(yaw, pitch, throttle)
             print yaw, pitch, throttle, d
             # self.stableZAccel(y)
             # self.stableZAccel(x)
             time.sleep(.1)
+        a.close()
 
 
 
