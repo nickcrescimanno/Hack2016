@@ -28,8 +28,8 @@
       <file leaf-file-name="readin.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+            <state relative-caret-position="68">
+              <caret line="4" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -683,8 +683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
