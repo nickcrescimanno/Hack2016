@@ -17,12 +17,11 @@ import pigpio  # http://abyz.co.uk/rpi/pigpio/python.html
     bit[1]
 """
 def getVal(first, second):
-    a = (first << 8) + second
-    if a >= 2 ** 15:
-        a = a - 2 ** 16 - 1  # bit shi
-    print type(a)
-    a = a / 16384.0
-    return a
+    val = (first << 8) + second
+    if val >= 2 ** 15:
+        val = val - 2 ** 16 - 1  # bit shi
+    val = val / 16384.0
+    return val
 
 def main():
     BUS = 1
