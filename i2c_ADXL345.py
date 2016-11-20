@@ -48,9 +48,11 @@ if h >= 0:  # Connected OK?
 
         else:
             print "WE GOT AN ERROR"
-        a=b[0] <<8  +  b[1]
+        a=(b[0] <<8)  +  b[1]
         print type(a)
         print a
+        time.sleep(.2)
+        print a[0]
 pi.i2c_close(h)
 
 pi.stop()
