@@ -16,7 +16,7 @@ class plane():
     h = 2
     YAW_CENTER = 1500
     PITCH_CENTER = 1500
-    
+
     def __init__(self):
         self.pi = pigpio.pi()  # connect to local Pi
         self.pi.set_mode(self.THROTTLE, pigpio.OUTPUT)  # GPIO 17 as output
@@ -91,13 +91,13 @@ class plane():
         a.close()
 
     def trim(self, button):
-        if (button==4):
+        if (button==0):
             self.PITCH_CENTER-=50
-        if button==5:
+        if button==1:
             self.PITCH_CENTER += 50
-        if button == 6:
+        if button == 2:
             self.YAW_CENTER -= 50
-        if button == 7:
+        if button == 3:
             self.YAW_CENTER += 50
 
     def updateControls(self):
