@@ -52,7 +52,6 @@ if h >= 0:  # Connected OK?
         print type(a)
         print a
         time.sleep(.2)
-        print a[0]
 pi.i2c_close(h)
 
 pi.stop()
