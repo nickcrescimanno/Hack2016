@@ -61,6 +61,8 @@ def main():
 
         while True:
             vals = readBytes(0x3B, 2)
+            zPos = vals[0]
+
             time.sleep(.5)
 
             print vals

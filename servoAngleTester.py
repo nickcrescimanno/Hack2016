@@ -1,5 +1,10 @@
 import pigpio
 
+PITCH = 10
+YAW = 9
+THROTTLE = 11
+
+
 """Adjusts Servo to Degree specified by user"""
 def test():
     pi = pigpio.pi()  # connect to local Pi
