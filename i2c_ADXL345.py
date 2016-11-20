@@ -43,7 +43,7 @@ if h >= 0:  # Connected OK?
             # print binascii.hexlify(b)
             (x, y, z) = struct.unpack('<3h', buffer(b))
             print("x: {} y: {} z: {}".format(x, y, z))
-            print int("0xdeadbeef", 0)
+            print int("0xdeadbeef", 16)
 
         else:
             print "WE GOT AN ERROR"
