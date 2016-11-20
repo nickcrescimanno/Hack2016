@@ -44,7 +44,7 @@ if h >= 0:  # Connected OK?
 
         a = (b[0] << 8) + b[1]
         if a >= 2 ** 15:
-            a = 2 ** 15 - a + 1  # bit shi
+            a = a - 2 ** 16 - 1  # bit shi
         print type(a)
         a = a / 16384.0
         print a
