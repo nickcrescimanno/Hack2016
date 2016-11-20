@@ -51,6 +51,7 @@ if h >= 0:  # Connected OK?
         a=(b[0] <<8)  +  b[1]
         a = a / 16384.0
         print type(a)
+        print a
 
         time.sleep(.2)
 pi.i2c_close(h)
