@@ -14,8 +14,6 @@ class plane():
     THROTTLE = 11
     pi = 0
     h = 2
-    refreshInterval = .05 #20 Hz
-    yawOut = 0
 
     def __init__(self):
         self.pi = pigpio.pi()  # connect to local Pi
@@ -54,10 +52,8 @@ class plane():
     """Adjusts Servo to Degree specified by user"""
 
     def test(self):
-        last = time.time()
         a = ControllerInput()
         while True:
-
             for i in xrange(4):
                 print "!"
                 pos = self.readBytes(0x3B, 6, 1)
@@ -69,12 +65,10 @@ class plane():
                 self.pitchOut = 1500 + pitch * self.RANGE
                 self.throttleOut = 1000 + throttle * self.THROTTLE_RANGE
 
-            if((time.time()-last)>=self.refreshInterval):
                 self.updateControls()
-                last = time.time()
 
-            self.smooth()
-                #print yaw, pitch, throttle, d
+
+                print yaw, pitch, throttle, d
 
 
         a.close()
@@ -83,6 +77,8 @@ class plane():
         self.pi.set_servo_pulsewidth(self.YAW, int(self.yawOut))
         self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitchOut))
         self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttleOut))
+
+    def smooth(self, yaw, pitch,throttle):
 
 
 aero = plane()
