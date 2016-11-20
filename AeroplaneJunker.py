@@ -95,7 +95,7 @@ class plane():
         self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitchOut))
         self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttleOut))
 
-    def smooth(self, yaw, pitch, throttle):
+    #def smooth(self, yaw, pitch, throttle):
 
 
 aero = plane()
