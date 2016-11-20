@@ -88,8 +88,8 @@
       <file leaf-file-name="ripCode.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ripCode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3176">
-              <caret line="316" column="112" selection-start-line="316" selection-start-column="112" selection-end-line="316" selection-end-column="112" />
+            <state relative-caret-position="-1401">
+              <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -622,8 +622,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ripCode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3176">
-          <caret line="316" column="112" selection-start-line="316" selection-start-column="112" selection-end-line="316" selection-end-column="112" />
+        <state relative-caret-position="-1401">
+          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

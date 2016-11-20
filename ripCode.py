@@ -2,7 +2,6 @@ from calc import calc
 import pigpio
 import time
 
-
 XGOFFS_TC = 0x00  # Bit 7 PWR_MODE, bits 6:1 XG_OFFS_TC, bit 0 OTP_BNK_VLD
 YGOFFS_TC = 0x01
 ZGOFFS_TC = 0x02
@@ -121,29 +120,32 @@ pi = pigpio.pi()  # open local Pi
 
 h = pi.i2c_open(1, 0x68)
 
+
 def writeByte(address, hval):
     pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
+
 
 def readBytes(address, count):
     bites = []
     val = []
     z = pi.i2c_read_i2c_block_data(h, address, count)
-    count=0
+    count = 0
     for i in z:
         bites.extend(i)
-        count+=1
+        count += 1
     for i in range(0, count, 2):
-        a=calc()
-        val = a.calc(bites[i], bites[i+1])
+        a = calc()
+        val = a.calc(bites[i], bites[i + 1])
         bites[i]
     return val
 
+
 def readByte(y):
     b = pi.i2c_read_byte_data(h, y)
+    return b
 
 
-
-def calibrateMPU6050 (dest1, dest2):
+def calibrateMPU6050(dest1, dest2):
     gyro_bias = [0, 0, 0]
     accel_bias = [0, 0, 0]
 
@@ -166,13 +168,11 @@ def calibrateMPU6050 (dest1, dest2):
     writeByte(USER_CTRL, 0x0C)  # Reset FIFO and DMP
     time.sleep(.015)
 
-
     # Configure MPU6050 gyro and accelerometer for bias calculation
     writeByte(CONFIG, 0x01)  # Set low-pass filter to 188 Hz
     writeByte(SMPLRT_DIV, 0x00)  # Set sample rate to 1 kHz
     writeByte(GYRO_CONFIG, 0x00)  # Set gyro full-scale to 250 degrees per second, maximum sensitivity
     writeByte(ACCEL_CONFIG, 0x00)  # Set accelerometer full-scale to 2 g, maximum sensitivity
-
 
     gyrosensitivity = 131  # = 131 LSB/degrees/sec
     accelsensitivity = 16384  # = 16384 LSB/g
@@ -190,10 +190,10 @@ def calibrateMPU6050 (dest1, dest2):
     for i in xrange(len(packet_count)):
         accel_temp = [0, 0, 0]
         gyro_temp = [0, 0, 0]
-        data=readBytes(FIFO_R_W, 12)  # read data for averaging
+        data = readBytes(FIFO_R_W, 12)  # read data for averaging
         for x in xrange(3):
             accel_temp[x] = data[x]
-        for x in xrange(3,5,3):
+        for x in xrange(3, 5, 3):
             gyro_temp[x] = data[x]
 
         accel_bias[0] += accel_temp[0]  # Sum individual signed 16-bit biases to get accumulated signed 32-bit biases
@@ -210,14 +210,14 @@ def calibrateMPU6050 (dest1, dest2):
     gyro_bias[1] /= packet_count
     gyro_bias[2] /= packet_count
 
-
     if (accel_bias[2] > 0L):
         accel_bias[2] -= accelsensitivity  # Remove gravity from the z-axis accelerometer bias calculation
     else:
         accel_bias[2] += accelsensitivity
 
     # Construct the gyro biases for push to the hardware gyro bias registers, which are reset to zero upon device startup
-    data[0] = (-gyro_bias[0] / 4 >> 8) & 0xFF  # Divide by 4 to get 32.9 LSB per deg/s to conform to expected bias input format
+    data[0] = (-gyro_bias[
+        0] / 4 >> 8) & 0xFF  # Divide by 4 to get 32.9 LSB per deg/s to conform to expected bias input format
     data[1] = (-gyro_bias[0] / 4) & 0xFF  # Biases are additive, so change sign on calculated average gyro biases
     data[2] = (-gyro_bias[1] / 4 >> 8) & 0xFF
     data[3] = (-gyro_bias[1] / 4) & 0xFF
@@ -256,21 +256,24 @@ def calibrateMPU6050 (dest1, dest2):
         if (accel_bias_reg[i] & 1):
             mask_bit[i] = 0x01  # If temperature compensation bit is set, record that fact in mask_bit
 
-
     # Construct total accelerometer bias, including calculated average accelerometer bias from above
-    accel_bias_reg[0] -= (accel_bias[0] / 8)  # Subtract calculated averaged accelerometer bias scaled to 2048 LSB/g (16 g full scale)
+    accel_bias_reg[0] -= (
+    accel_bias[0] / 8)  # Subtract calculated averaged accelerometer bias scaled to 2048 LSB/g (16 g full scale)
     accel_bias_reg[1] -= (accel_bias[1] / 8)
     accel_bias_reg[2] -= (accel_bias[2] / 8)
 
     data[0] = (accel_bias_reg[0] >> 8) & 0xFF
     data[1] = (accel_bias_reg[0]) & 0xFF
-    data[1] = data[1] | mask_bit[0]  # preserve temperature compensation bit when writing back to accelerometer bias registers
+    data[1] = data[1] | mask_bit[
+        0]  # preserve temperature compensation bit when writing back to accelerometer bias registers
     data[2] = (accel_bias_reg[1] >> 8) & 0xFF
     data[3] = (accel_bias_reg[1]) & 0xFF
-    data[3] = data[3] | mask_bit[1]  # preserve temperature compensation bit when writing back to accelerometer bias registers
+    data[3] = data[3] | mask_bit[
+        1]  # preserve temperature compensation bit when writing back to accelerometer bias registers
     data[4] = (accel_bias_reg[2] >> 8) & 0xFF
     data[5] = (accel_bias_reg[2]) & 0xFF
-    data[5] = data[5] | mask_bit[2]  # preserve temperature compensation bit when writing back to accelerometer bias registers
+    data[5] = data[5] | mask_bit[
+        2]  # preserve temperature compensation bit when writing back to accelerometer bias registers
 
     # Push accelerometer biases to hardware registers doesn't work well for accelerometer
     # Are we handling the temperature compensation bit correctly?
@@ -282,15 +285,14 @@ def calibrateMPU6050 (dest1, dest2):
     #  writeByte(MPU6050_ADDRESS, ZA_OFFSET_L_TC, data[5])
 
     # Output scaled accelerometer biases for manual subtraction in the main program
-    dest2[0] = 1.0 * accel_bias[0] / 1.0 *accelsensitivity
-    dest2[1] = 1.0 * accel_bias[1] / 1.0 *accelsensitivity
+    dest2[0] = 1.0 * accel_bias[0] / 1.0 * accelsensitivity
+    dest2[1] = 1.0 * accel_bias[1] / 1.0 * accelsensitivity
     dest2[2] = 1.0 * accel_bias[2] / 1.0 * accelsensitivity
-    
-
 
     # Accelerometer and gyroscope self test check calibration wrt factory settings
 
-    def MPU6050SelfTest(destination):  # Should return percent deviation from factory trim values, +/- 14 or less deviation is a pass
+    def MPU6050SelfTest(
+            destination):  # Should return percent deviation from factory trim values, +/- 14 or less deviation is a pass
 
         rawData = []
         # Configure the accelerometer for self-test
@@ -302,7 +304,7 @@ def calibrateMPU6050 (dest1, dest2):
         rawData[2] = readByte(SELF_TEST_Z)  # Z-axis self-test results
         rawData[3] = readByte(SELF_TEST_A)  # Mixed-axis self-test results
         # Extract the acceleration test results first
-        
+
         selfTest = []
         selfTest[0] = (rawData[0] >> 3) | (rawData[3] & 0x30) >> 4  # XA_TEST result is a five-bit unsigned integer
         selfTest[1] = (rawData[1] >> 3) | (rawData[3] & 0x0C) >> 4  # YA_TEST result is a five-bit unsigned integer
@@ -313,12 +315,15 @@ def calibrateMPU6050 (dest1, dest2):
         selfTest[5] = rawData[2] & 0x1F  # ZG_TEST result is a five-bit unsigned integer
         # Process results to allow final comparison with factory set values
         factoryTrim = []
-        factoryTrim[0] = (4096.0 * 0.34) * (pow((0.92 / 0.34), (( 1.0 * selfTest[0] - 1.0) / 30.0)))  # FT[Xa] factory trim calculation
-        factoryTrim[1] = (4096.0 * 0.34) * (pow((0.92 / 0.34), (( 1.0 * selfTest[1] - 1.0) / 30.0)))  # FT[Ya] factory trim calculation
-        factoryTrim[2] = (4096.0 * 0.34) * (pow((0.92 / 0.34), (( 1.0 * selfTest[2] - 1.0) / 30.0)))  # FT[Za] factory trim calculation
-        factoryTrim[3] = (25.0 * 131.0) * (pow(1.046, ( 1.0 * selfTest[3] - 1.0) ))  # FT[Xg] factory trim calculation
-        factoryTrim[4] = (-25.0 * 131.0) * (pow(1.046, ( 1.0 * selfTest[4] - 1.0) ))  # FT[Yg] factory trim calculation
-        factoryTrim[5] = (25.0 * 131.0) * (pow(1.046, ( 1.0 * selfTest[5] - 1.0) ))  # FT[Zg] factory trim calculation
+        factoryTrim[0] = (4096.0 * 0.34) * (
+        pow((0.92 / 0.34), ((1.0 * selfTest[0] - 1.0) / 30.0)))  # FT[Xa] factory trim calculation
+        factoryTrim[1] = (4096.0 * 0.34) * (
+        pow((0.92 / 0.34), ((1.0 * selfTest[1] - 1.0) / 30.0)))  # FT[Ya] factory trim calculation
+        factoryTrim[2] = (4096.0 * 0.34) * (
+        pow((0.92 / 0.34), ((1.0 * selfTest[2] - 1.0) / 30.0)))  # FT[Za] factory trim calculation
+        factoryTrim[3] = (25.0 * 131.0) * (pow(1.046, (1.0 * selfTest[3] - 1.0)))  # FT[Xg] factory trim calculation
+        factoryTrim[4] = (-25.0 * 131.0) * (pow(1.046, (1.0 * selfTest[4] - 1.0)))  # FT[Yg] factory trim calculation
+        factoryTrim[5] = (25.0 * 131.0) * (pow(1.046, (1.0 * selfTest[5] - 1.0)))  # FT[Zg] factory trim calculation
 
         #  Output self-test results and factory trim calculation if desired
         #  Serial.println(selfTest[0]) Serial.println(selfTest[1]) Serial.println(selfTest[2])
@@ -330,7 +335,8 @@ def calibrateMPU6050 (dest1, dest2):
         # To get to percent, must multiply by 100 and subtract result from 100
         destination = []
         for i in xrange(6)
-            destination[i] = 100.0 + 100.0 * 1.0 * ( selfTest[i] - factoryTrim[i]) / factoryTrim[i]  # Report percent differences
+            destination[i] = 100.0 + 100.0 * 1.0 * (selfTest[i] - factoryTrim[i]) / factoryTrim[
+                i]  # Report percent differences
 
 
-
+calibrateMPU6050()
