@@ -12,6 +12,9 @@ class ControllerInput:
         self.s.listen(1)
         print 'Listening'
 
+    def close(self):
+        self.s.close()
+
     def poll(self):
         # returns latest input from controller
         connection, address = self.s.accept()
@@ -36,3 +39,4 @@ class ControllerInput:
         normalized2 = (ord(message[1]) - 128) / 128
         normalized3 = (ord(message[1]) - 256) / 256
         return normalized1, normalized2, normalized3, ord(message[3])
+
