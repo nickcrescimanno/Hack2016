@@ -56,7 +56,8 @@ class plane():
             print z
             self.stableZAccel(z)
             a = ControllerInput()
-            print(a.poll())
+            a,b,c,d=a.poll()
+            print a,b,c,d
             # self.stableZAccel(y)
             # self.stableZAccel(x)
             time.sleep(.1)
