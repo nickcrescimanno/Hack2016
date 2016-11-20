@@ -266,11 +266,11 @@ def calibrateMPU6050(dest1, dest2):
     # the accelerometer biases calculated above must be divided by 8.
 
     accel_bias_reg = [0, 0, 0]  # A place to hold the factory accelerometer trim biases
-    data = readBytes(XA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
+    data = readBytes(XA_OFFSET_H, 2, 0)  # Read factory accelerometer trim values
     accel_bias_reg[0] = data[0]
-    data = readBytes(YA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
+    data = readBytes(YA_OFFSET_H, 2, 0)  # Read factory accelerometer trim values
     accel_bias_reg[1] = data[0]
-    data = readBytes(ZA_OFFSET_H, 2, 1)  # Read factory accelerometer trim values
+    data = readBytes(ZA_OFFSET_H, 2, 0)  # Read factory accelerometer trim values
     accel_bias_reg[2] = data[0]
 
     mask_bit = [0, 0, 0]  # Define array to hold mask bit for each accelerometer bias axis
