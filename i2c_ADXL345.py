@@ -44,7 +44,7 @@ def main():
         pi.i2c_write_byte_data(h, 0xC, 0x10)  # DATA_FORMAT res +/- 2g.
 
         (s, b) = pi.i2c_read_i2c_block_data(h, 0x1C, 1)
-        print binascii.hexlify(bytearray(b))
+        #print binascii.hexlify(bytearray(b))
 
         while True:
             (s, b) = pi.i2c_read_i2c_block_data(h, 0x3F, 2)
