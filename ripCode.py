@@ -130,23 +130,30 @@ h = pi.i2c_open(1, 0x68)
     bit[1]
 """
 def getVal(first, second):
-    val = (first << 8)| second
+    val = readVal(first, second)
+    val = val / 16384.0
+    return val
+
+def readVal(first, second):
+    val = (first << 8) | second
     if val >= 2 ** 15:
         val = val - 2 ** 16 - 1  # bit shi
-    val = val / 16384.0
     return val
 
 def writeByte(address, hval):
     pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
 
-def readBytes(address, count):
+def readBytes(address, count, isData):
     bites = []
     (s,z) = pi.i2c_read_i2c_block_data(h, address, count)
     index = 0
     first = 0
     second = 1
     while second < count:
-        bites.append(getVal(z[first], z[second]))
+        if isData:
+            bites.append(getVal(z[first], z[second]))
+        else:
+            bites.append(readVal(z[first], z[second]))
         first+=2
         second+=2
         index+=1
