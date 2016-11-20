@@ -69,9 +69,9 @@ class plane():
             self.throttleDown()
 
     def stableZAccel(self, z):
-        if (z < 1):
+        if (z < -1):
             self.throttleUp()
-        elif (z > 1.3):
+        elif (z > -1.3):
             self.throttleDown()
 
     def throttleUp(self):
