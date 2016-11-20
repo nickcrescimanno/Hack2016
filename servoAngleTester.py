@@ -4,8 +4,8 @@ import pigpio
 def test():
     pi = pigpio.pi()  # connect to local Pi
     pi.set_mode(17, pigpio.OUTPUT)  # GPIO 17 as output
+    degree = input('DEGREE: ')
     while True:
-        degree = input('DEGREE: ')
         pi.set_servo_pulsewidth(input("ENTER PIN"), degree)
 
 test();
