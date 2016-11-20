@@ -1,12 +1,13 @@
 class ControllerInput:
 
 	import socket, traceback
-
-	s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
-	s.setsockopt(socket.SOL_SOCKET,socket.SO_BROADCAST,1)
-	s.bind(('',4444))
-	s.listen(1)
+	s=1
+	def __init__(self):
+		self.s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
+		s.setsockopt(socket.SOL_SOCKET,socket.SO_BROADCAST,1)
+		s.bind(('',4444))
+		s.listen(1)
 	print 'Listening'
 
 	def poll(self):
