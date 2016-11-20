@@ -366,4 +366,5 @@ calibrateMPU6050(gyroBias, accelBias)
 while True:
     vals = readBytes(0x3B, 6, 1)
     print vals[0]-accelBias[0], vals[1]-accelBias[1], vals[2]-accelBias[2]
+    time.sleep(.01)
 
