@@ -37,7 +37,7 @@ if h >= 0:  # Connected OK?
     while True:
         (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 6)
 
-        time.sleep(.1)
+        time.sleep(.5)
 
         if s >= 0:
             # print binascii.hexlify(b)
