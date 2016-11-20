@@ -53,6 +53,7 @@ def main():
             time.sleep(.5)
 
             a = getVal(b[0], b[1])
+            print a
 
         time.sleep(.2)
     pi.i2c_close(h)
