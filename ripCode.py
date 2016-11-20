@@ -2,8 +2,8 @@ from calc import calc
 import pigpio
 import time
 
-gyroBias=[]
-accelBias=[]
+gyroBias=[0,0,0]
+accelBias=[0,0,0]
 XGOFFS_TC = 0x00  # Bit 7 PWR_MODE, bits 6:1 XG_OFFS_TC, bit 0 OTP_BNK_VLD
 YGOFFS_TC = 0x01
 ZGOFFS_TC = 0x02
@@ -366,5 +366,5 @@ calibrateMPU6050(gyroBias, accelBias)
 while True:
     vals = readBytes(0x3B, 6, 1)
     for i in range(len(vals)):
-        print vals[i]*aRes-accelBias[i]
+        print vals[i]-accelBias[i]
 
