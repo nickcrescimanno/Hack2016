@@ -16,9 +16,7 @@ class plane():
     h = 2
     YAW_CENTER = 1500
     PITCH_CENTER = 1500
-    MAX=1700
-    MIN=1300
-
+    
     def __init__(self):
         self.pi = pigpio.pi()  # connect to local Pi
         self.pi.set_mode(self.THROTTLE, pigpio.OUTPUT)  # GPIO 17 as output
@@ -68,19 +66,22 @@ class plane():
                 yaw, pitch, throttle, d = a.poll()
                 if d!=0 and dOld==0:
                     for i in range(7):
-                        if (d & 2**i) != 0:
+                        if (d & 2**i) == 1:
                             self.trim(i)
                 dOld = d
+
                 self.yawOut = self.YAW_CENTER - yaw * self.RANGE
                 if (self.MIN > self.yawOut):
                     self.yawOut = self.MIN
                 elif(self.MAX<self.yawOut):
                     self.yawOut= self.MAX
+
                 self.pitchOut = self.PITCH_CENTER - pitch * self.RANGE
                 if (self.MIN > self.pitchOut):
                     self.pitchOut = self.MIN
                 elif(self.MAX<self.pitchOut):
                     self.pitchOut= self.MAX
+
                 self.throttleOut = 1000 + throttle * self.THROTTLE_RANGE
 
                 self.updateControls()
