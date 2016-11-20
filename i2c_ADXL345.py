@@ -39,7 +39,8 @@ def writeByte(address, hval):
 def readBytes(address, count):
     bites = []
     (s,z) = pi.i2c_read_i2c_block_data(h, address, count)
-    for i in range(0, count-1, 2):
+    for i in range(0, count-2, 2):
+        range
         count = i
         bites[i] = getVal(z[i], z[(i+1)])
     return bites
