@@ -29,30 +29,25 @@ if h >= 0:  # Connected OK?
     pi.i2c_write_byte_data(h, 0x6B, 0)  # wake up mpu6050
     # pi.i2c_write_byte_data(h, 0x2d, 8)  # wake up mpu6050
     # pi.i2c_write_byte_data(h, 0x1C, 0)  # set sensitivity
-    pi.i2c_write_byte_data(h, 0xC, 0x10) # DATA_FORMAT res +/- 2g.
+    pi.i2c_write_byte_data(h, 0xC, 0x10)  # DATA_FORMAT res +/- 2g.
 
     (s, b) = pi.i2c_read_i2c_block_data(h, 0x1C, 1)
     print binascii.hexlify(bytearray(b))
-    
-
 
     while True:
-
         (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 6)
 
-	    time.sleep(.1)
+        time.sleep(.1)
 
-        if s >= 0:
-	    #print binascii.hexlify(b)
-            (x, y, z) = struct.unpack('<3h', buffer(b))
-            print("x: {} y: {} z: {}".format(x, y, z))
-            print int("0xdeadbeef", 0)
+    if s >= 0:
+        # print binascii.hexlify(b)
+        (x, y, z) = struct.unpack('<3h', buffer(b))
+        print("x: {} y: {} z: {}".format(x, y, z))
+        print int("0xdeadbeef", 0)
 
-        else:
-            print "WE GOT AN ERROR"
+    else:
+        print "WE GOT AN ERROR"
 
 pi.i2c_close(h)
 
 pi.stop()
-
-
