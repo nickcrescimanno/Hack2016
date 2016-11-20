@@ -73,33 +73,7 @@ class plane():
 
         a.close()
 
-
-
-    def stableXAccel(self, x):
-        if (x < 1):
-            self.throttleUp()
-        elif (x > 1):
-            self.throttleDown()
-
-    def stableYAccel(self, y):
-        if (y < 1):
-            self.throttleUp()
-        elif (y > 1):
-            self.throttleDown()
-
-    def stableZAccel(self, z):
-        if (z < -1):
-            self.throttleUp()
-        elif (z > -1.3):
-            self.throttleDown()
-
     def updateControls(self, yaw, pitch, throttle):
-
-        # if(yawNew > yawThreshold )
-        # self.yaw+=1
-        # self.throttle+=1;
-        # self.pitch+=1
-
         self.pi.set_servo_pulsewidth(self.YAW, int(yaw))
         self.pi.set_servo_pulsewidth(self.PITCH, int(pitch))
         self.pi.set_servo_pulsewidth(self.THROTTLE, int(throttle))
