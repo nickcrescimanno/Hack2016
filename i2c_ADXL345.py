@@ -53,7 +53,7 @@ def main():
         pi.i2c_write_byte_data(h, 0xC, 0x10)  # DATA_FORMAT res +/- 2g.
 
         while True:
-            vals = readBytes(0x3F, 6)
+            vals = readBytes(0x3B, 6)
             time.sleep(.5)
 
             print vals
