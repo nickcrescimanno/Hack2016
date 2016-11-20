@@ -3,9 +3,9 @@ import pigpio
 import time
 
 class plane():
-    MAX=2500-200
+    MAX=2500-400
     AVG=1500
-    MIN=500+200
+    MIN=500+400
     PITCH = 10
     YAW = 9
     THROTTLE = 11
