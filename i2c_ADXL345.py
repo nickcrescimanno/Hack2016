@@ -47,8 +47,8 @@ def readBytes(address, count):
     second = 1
     while second < count:
         bites[index] = getVal(z[first], z[second])
-        first+=1
-        second+=1
+        first+=2
+        second+=2
     return bites
 
 def main():
