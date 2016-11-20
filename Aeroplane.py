@@ -100,9 +100,9 @@ class plane():
         # self.throttle+=1;
         # self.pitch+=1
 
-        self.pi.set_servo_pulsewidth(self.YAW, int(self.yaw))
-        self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitch))
-        self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttle))
+        self.pi.set_servo_pulsewidth(self.YAW, int(yaw))
+        self.pi.set_servo_pulsewidth(self.PITCH, int(pitch))
+        self.pi.set_servo_pulsewidth(self.THROTTLE, int(throttle))
 
 
 
