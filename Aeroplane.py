@@ -93,16 +93,16 @@ class plane():
         elif (z > -1.3):
             self.throttleDown()
 
-    def updateControls(self, yaw, pitch, throttle):
-
-        if(yawNew > yawThreshold )
-        self.yaw+=1
-        self.throttle+=1;
-        self.pitch+=1
-
-        self.pi.set_servo_pulsewidth(self.YAW, int(self.yaw))
-        self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitch))
-        self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttle))
+    # def updateControls(self, yaw, pitch, throttle):
+    #
+    #     if(yawNew > yawThreshold )
+    #     self.yaw+=1
+    #     self.throttle+=1;
+    #     self.pitch+=1
+    #
+    #     self.pi.set_servo_pulsewidth(self.YAW, int(self.yaw))
+    #     self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitch))
+    #     self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttle))
 
 
 
