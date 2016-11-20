@@ -200,6 +200,7 @@ def calibrateMPU6050(dest1, dest2):
     fifo_count = readBytes(FIFO_COUNTH, 2)[0] # read FIFO sample count
     packet_count = fifo_count / 12  # How many sets of full gyro and accelerometer data for averaging
     print packet_count
+    print fifo_count
 
     for i in xrange(packet_count):
         accel_temp = [0, 0, 0]
