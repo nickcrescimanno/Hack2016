@@ -212,7 +212,7 @@ def calibrateMPU6050(dest1, dest2):
     for i in xrange(packet_count):
         accel_temp = [0, 0, 0]
         gyro_temp = [0, 0, 0]
-        data = readBytes(FIFO_R_W, 12, 1)  # read data for averaging
+        data = readBytes(FIFO_R_W, 12, 0)  # read data for averaging
         for x in xrange(3):
             accel_temp[x] = data[x]
         i=0
