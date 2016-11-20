@@ -42,10 +42,10 @@ if h >= 0:  # Connected OK?
         if s >= 0:
             # print binascii.hexlify(b)
             (x, y, z, q, w) = struct.unpack('<5h', buffer(b))
-            (x, y, z, q, w) = (float (x/16384), float (y/16384), float (z/16384), float (q/16384), float (w/16384))
+            (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
             print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
             for i in xrange(3):
-                print float(b[i]/16384)
+                print float(b[i]/16384.0)
 
         else:
             print "WE GOT AN ERROR"
