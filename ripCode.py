@@ -188,7 +188,7 @@ def calibrateMPU6050 (dest1, dest2):
     ii < packet_count
     ii + +) [
         int16_t
-    accel_temp[3] = [0, 0, 0], gyro_temp[3] = [0, 0, 0]
+    accel_temp = [0, 0, 0], gyro_temp = [0, 0, 0]
     readBytes(MPU6050_ADDRESS, FIFO_R_W, 12, & data[0])  # read data for averaging
     accel_temp[0] = (int16_t)(((int16_t)
     data[0] << 8) | data[1]  )  # Form signed 16-bit integer for each sample in FIFO

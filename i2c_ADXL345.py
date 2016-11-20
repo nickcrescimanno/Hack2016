@@ -23,6 +23,23 @@ def getVal(first, second):
     val = val / 16384.0
     return val
 
+def writeByte(address, hval):
+    pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
+
+def readBytes(address, count):
+    bites = []
+    val = []
+    z = pi.i2c_read_i2c_block_data(h, address, count)
+    count=0
+    for i in z:
+        bites.extend(i)
+        count+=1
+    for i in range(0, count, 2):
+        a=calc()
+        val = a.calc(bites[i], bites[i+1])
+        bites[i]
+    return val
+
 def main():
     BUS = 1
 
@@ -35,7 +52,6 @@ def main():
     h = pi.i2c_open(BUS, ADXL345_I2C_ADDR)
 
     if h >= 0:  # Connected OK?
-        h.
         # Initialise ADXL345.
         pi.i2c_write_byte_data(h, 0x6B, 0)  # wake up mpu6050
         # pi.i2c_write_byte_data(h, 0x2d, 8)  # wake up mpu6050
