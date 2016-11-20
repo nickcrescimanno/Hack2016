@@ -30,10 +30,30 @@ class plane():
     """Adjusts Servo to Degree specified by user"""
     def test(self):
         while True:
-            vals = self.readBytes(0x3B, 6, 1)
-            print vals[0], vals[1], vals[2]
+            pos = self.readBytes(0x3B, 6, 1)
+            (z, y, x) = (pos[0], pos[1], pos[2])
+            self.stableZAccel(z)
+            # self.stableZAccel(y)
+            # self.stableZAccel(x)
             time.sleep(.1)
 
+    def stableXAccel(self, x):
+        if (x < 1):
+            self.throttleUp()
+        elif (x > 1):
+            self.throttleDown()
+
+    def stableYAccel(self, y):
+        if (y < 1):
+            self.throttleUp()
+        elif (y > 1):
+            self.throttleDown()
+
+    def stableZAccel(self, z):
+        if (z < 1):
+            self.throttleUp()
+        elif (z > 1.3):
+            self.throttleDown()
 
     def throttleUp(self):
         self.pi.set_servo_pulsewidth(self.THROTTLE, self.MAX)
@@ -48,7 +68,7 @@ class plane():
         self.pi.set_servo_pulsewidth(self.PITCH, self.MIN)
 
     def yawUp(self):
-        self.pi.set_servo_pulsewidth(self.YAWW, self.MAX)
+        self.pi.set_servo_pulsewidth(self.YAW, self.MAX)
 
     def yawDown(self):
         self.pi.set_servo_pulsewidth(self.YAW, self.MIN)
