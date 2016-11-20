@@ -60,7 +60,7 @@ class plane():
             # self.stableZAccel(z)
             a = ControllerInput()
             yaw, pitch, throttle, d = a.poll()
-            self.updateControls(yaw, pitch, throttle)
+            # self.updateControls(yaw, pitch, throttle)
             print yaw, pitch, throttle, d
             # self.stableZAccel(y)
             # self.stableZAccel(x)
