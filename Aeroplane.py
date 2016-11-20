@@ -9,12 +9,14 @@ class plane():
     YAW = 9
     THROTTLE = 11
     pi=0
+    h = 2
 
     def __init__(self):
         self.pi = pigpio.pi()  # connect to local Pi
         self.pi.set_mode(self.THROTTLE, pigpio.OUTPUT)  # GPIO 17 as output
         self.pi.set_mode(self.PITCH, pigpio.OUTPUT)  # GPIO 17 as output
         self.pi.set_mode(self.YAW, pigpio.OUTPUT)  # GPIO 17 as output
+        self.h = self.pi.i2c_open(1, 0x68)
 
     def getVal(self,first, second):
         val = self.readVal(first, second)
@@ -26,6 +28,23 @@ class plane():
         if val >= 2 ** 15:
             val = val - 2 ** 16 - 1  # bit shi
         return val
+
+    def readBytes(self,address, count, isData):
+        bites = []
+        (s, z) = self.pi.i2c_read_i2c_block_data(self.h, address, count)
+        index = 0
+        first = 0
+        second = 1
+        while second < count:
+            if isData:
+                bites.append(self.getVal(z[first], z[second]))
+            else:
+                bites.append(self.readVal(z[first], z[second]))
+            first += 2
+            second += 2
+            index += 1
+        return bites
+
 
     """Adjusts Servo to Degree specified by user"""
     def test(self):

@@ -27,8 +27,8 @@
       <file leaf-file-name="Aeroplane.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aeroplane.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1089">
-              <caret line="70" column="45" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
+            <state relative-caret-position="197">
+              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -71,8 +71,8 @@
       <file leaf-file-name="ripCode.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ripCode.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="140" selection-end-column="14" />
+            <state relative-caret-position="207">
+              <caret line="122" column="24" selection-start-line="122" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -159,11 +159,11 @@
         <option value="$PROJECT_DIR$/ripCode" />
         <option value="$PROJECT_DIR$/calc.py" />
         <option value="$PROJECT_DIR$/ff.py" />
-        <option value="$PROJECT_DIR$/ripCode.py" />
         <option value="$PROJECT_DIR$/angleTester.py" />
         <option value="$PROJECT_DIR$/servoAngleTester.py" />
         <option value="$PROJECT_DIR$/i2c_ADXL345.py" />
         <option value="$PROJECT_DIR$/pwmTester.py" />
+        <option value="$PROJECT_DIR$/ripCode.py" />
         <option value="$PROJECT_DIR$/Aeroplane.py" />
       </list>
     </option>
@@ -614,31 +614,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/morse_code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
-          <folding>
-            <element signature="e#120#130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/servoAngleTester.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ripCode.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="140" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -658,10 +638,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/morse_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+          <folding>
+            <element signature="e#120#130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ripCode.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="122" column="24" selection-start-line="122" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Aeroplane.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1089">
-          <caret line="70" column="45" selection-start-line="70" selection-start-column="45" selection-end-line="70" selection-end-column="45" />
+        <state relative-caret-position="197">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
