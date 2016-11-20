@@ -66,10 +66,7 @@ class plane():
                 throttleOut = 1000 + throttle * self.THROTTLE_RANGE
                 self.updateControls(yawOut, pitchOut, throttleOut)
                 print yaw, pitch, throttle, d
-                # self.stableZAccel(y)
-                # self.stableZAccel(x)
                 time.sleep(.001)
-                #self.incrementControls(yaw, pitch, throttle)
 
         a.close()
 
