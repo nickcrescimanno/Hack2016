@@ -43,10 +43,11 @@ if h >= 0:  # Connected OK?
 
         # < = little endian
 
-        (s, b) = pi.i2c_read_i2c_block_data(h, 0x59, 6)
-
+        (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 6)
+        time.sleep(.1)
         if s >= 0:
             print len(b)
+            print str(b)
             (x, y, z) = struct.unpack('<3h', buffer(b))
             print("{} {} {}".format(x, y, z))
             read += 1

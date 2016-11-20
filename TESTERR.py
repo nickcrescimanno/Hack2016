@@ -8,6 +8,6 @@ for bus in xrange(100):
         try:
             h = pi.i2c_open(bus, hex("0x"+str(address)))
             time.sleep(10)
-        except:
+        except Exception as e:
             print "not" + str(bus)
             bus+=1
