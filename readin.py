@@ -3,6 +3,8 @@ import socket, traceback
 
 class ControllerInput:
     s = 1
+    connection = 1
+    message = 0
 
     def __init__(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -12,16 +14,16 @@ class ControllerInput:
         self.s.listen(1)
         print 'Listening'
 
-        connection, address = self.s.accept()
+        self.connection, self.address = self.s.accept()
 
     def close(self):
-        connection.close()
+        self.connection.close()
         self.s.close()
 
     def poll(self):
         try:
-            message = connection.recv(16)
-            print "Got Mesage from %s: %s:" % (address, message)
+            message = self.connection.recv(16)
+            print "Got Mesage from %s: %s:" % (self.address, message)
         except(KeyboardInterrupt, SystemExit):
             raise
         except:
