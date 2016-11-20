@@ -31,40 +31,22 @@ if h >= 0:  # Connected OK?
     # pi.i2c_write_byte_data(h, 0x1C, 0)  # set sensitivity
     pi.i2c_write_byte_data(h, 0xC, 0x10) # DATA_FORMAT res +/- 2g.
 
-    read = 0
-
-    start_time = time.time()
-
     (s, b) = pi.i2c_read_i2c_block_data(h, 0x1C, 1)
     print binascii.hexlify(bytearray(b))
     
 
 
-    while (time.time() - start_time) < RUNTIME:
-
-        # 0x32 = X LSB, 0x33 = X MSB
-        # 0x34 = Y LSB, 0x35 = Y MSB
-        # 0x36 = Z LSB, 0x37 = Z MSB
-
-        # < = little endian
+    while True:
 
         (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 6)
-<<<<<<< HEAD
-        time.sleep(.1)
-        if s >= 0:
-            print len(b)
-            print str(b)
-=======
 
-	time.sleep(.1)
+	    time.sleep(.1)
 
         if s >= 0:
-	    #print binascii.hexlify(b) 
-           
->>>>>>> e302c46fa8cb9d5839d71afad3b22eebc109583f
+	    #print binascii.hexlify(b)
             (x, y, z) = struct.unpack('<3h', buffer(b))
             print("x: {} y: {} z: {}".format(x, y, z))
-            read += 1
+            print int("0xdeadbeef", 0)
 
         else:
             print "WE GOT AN ERROR"
@@ -73,4 +55,4 @@ pi.i2c_close(h)
 
 pi.stop()
 
-print(read, read / RUNTIME)
+
