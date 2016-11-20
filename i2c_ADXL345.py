@@ -31,6 +31,7 @@ def getVal(first, second):
     if val >= 2 ** 15:
         val = val - 2 ** 16 - 1  # bit shi
     val = val / 16384.0
+    print "WORK"
     return val
 
 def writeByte(address, hval):
