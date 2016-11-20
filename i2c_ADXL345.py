@@ -46,6 +46,7 @@ def readBytes(address, count):
     first = 0
     second = 1
     while second < count:
+        print index
         bites[index] = getVal(z[first], z[second])
         first+=2
         second+=2
