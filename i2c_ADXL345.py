@@ -35,17 +35,16 @@ if h >= 0:  # Connected OK?
     print binascii.hexlify(bytearray(b))
 
     while True:
-        (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 10)
+        (s, b) = pi.i2c_read_i2c_block_data(h, 0x3F, 2)
 
         time.sleep(.5)
 
         if s >= 0:
             # print binascii.hexlify(b)
-            (x, y, z, q, w) = struct.unpack('<5h', buffer(b))
-            (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
-            print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
-            for i in xrange(3):
-                print float(b[i]/16384.0)
+            (z) = struct.unpack('uint_16', buffer(b))
+            # (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
+            # print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
+            print("z:{}".format(z))
 
         else:
             print "WE GOT AN ERROR"
