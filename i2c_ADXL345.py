@@ -41,6 +41,8 @@ def readBytes(address, count):
     bites = []
     (s,z) = pi.i2c_read_i2c_block_data(h, address, count)
     index = 0
+    for x in z:
+        print x
     for i in range(0, count-1, 2):
         bites[index] = getVal(z[i], z[i+1])
         index+=1
