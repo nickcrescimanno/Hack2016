@@ -43,8 +43,7 @@ if h >= 0:  # Connected OK?
             # print binascii.hexlify(b)
             (x, y, z, q, w) = struct.unpack('<5h', buffer(b))
             (x, y, z, q, w) = (x/16384, y/16384, z/16384, q, w)
-            print("x: {} y: {} z: {} {} {} ".format(x, y, z, q, w))
-            print int(b, 16)
+            print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
 
         else:
             print "WE GOT AN ERROR"
