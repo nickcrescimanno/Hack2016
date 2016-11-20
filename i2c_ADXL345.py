@@ -42,9 +42,7 @@ if h >= 0:  # Connected OK?
         if s >= 0:
             # print binascii.hexlify(b)
             (x, y, z) = struct.unpack('<3h', buffer(b))
-            x=x/16384
-            y=y/16384
-            z=z/16834
+            (x, y, z) = (x/16384, y/16384, z/16384)
             print("x: {} y: {} z: {}".format(x, y, z))
             print int("b", 16)
 
