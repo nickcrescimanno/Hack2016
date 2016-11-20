@@ -44,7 +44,7 @@ if h >= 0:  # Connected OK?
             (z) = struct.unpack('H', buffer(b))
             # (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
             # print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
-            print("z:{}".format(z))
+            print("z:{}".format(z/16384.0))
 
         else:
             print "WE GOT AN ERROR"
