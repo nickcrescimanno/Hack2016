@@ -9,7 +9,7 @@ class ControllerInput:
 	s.listen(1)
 	print 'Listening'
 
-	def poll():
+	def poll(self):
 		#returns latest input from controller
 		connection,address=s.accept()
 		
