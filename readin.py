@@ -14,7 +14,7 @@ class ControllerInput:
 
     def poll(self):
         # returns latest input from controller
-        connection, address = s.accept()
+        connection, address = self.s.accept()
 
         try:
             message = connection.recv(16)
