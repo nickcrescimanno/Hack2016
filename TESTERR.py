@@ -8,5 +8,5 @@ while not foundIt:
             h = pi.i2c_open(bus, 0x68)
             foundIt = True
         except:
-            print "not" + bus
+            print "not" + str(bus)
             bus+=1
