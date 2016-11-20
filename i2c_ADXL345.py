@@ -27,7 +27,7 @@ h = pi.i2c_open(1, ADXL345_I2C_ADDR)
 def getVal(first, second):
     print first
     print second
-    val = (first << 8) & second
+    val = (first << 8) + second
     if val >= 2 ** 15:
         val = val - 2 ** 16 - 1  # bit shi
     val = val / 16384.0
@@ -40,7 +40,6 @@ def readBytes(address, count):
     bites = []
     z = pi.i2c_read_i2c_block_data(h, address, count)
     print getVal(z[0], z[1])
-    count=0
     for i in range(0, count-1, 2):
         bites[i] = getVal(z[i], z[i+1])
     return bites
