@@ -10,6 +10,14 @@ import sys
 
 import pigpio  # http://abyz.co.uk/rpi/pigpio/python.html
 
+pi = pigpio.pi()  # open local Pi
+ADXL345_I2C_ADDR = 0x68
+
+RUNTIME = 60.0
+
+h = pi.i2c_open(1, ADXL345_I2C_ADDR)
+
+
 """Gets Value from two indexes of bit array
 @param first
     bit[0]
@@ -35,22 +43,11 @@ def readBytes(address, count):
         bites.extend(i)
         count+=1
     for i in range(0, count, 2):
-        a=calc()
-        val = a.calc(bites[i], bites[i+1])
+        val = getVal(bites[i], bites[i+1])
         bites[i]
-    return val
+    return bites
 
 def main():
-    BUS = 1
-
-    ADXL345_I2C_ADDR = 0x68
-
-    RUNTIME = 60.0
-
-    pi = pigpio.pi()  # open local Pi
-
-    h = pi.i2c_open(BUS, ADXL345_I2C_ADDR)
-
     if h >= 0:  # Connected OK?
         # Initialise ADXL345.
         pi.i2c_write_byte_data(h, 0x6B, 0)  # wake up mpu6050
@@ -62,13 +59,10 @@ def main():
         #print binascii.hexlify(bytearray(b))
 
         while True:
-            (s, b) = pi.i2c_read_i2c_block_data(h, 0x3F, 2)
-            if s < 0:
-                print "WE GOT AN ERROR"
+            vals = readBytes(0x3F, 6)
             time.sleep(.5)
 
-            a = getVal(b[0], b[1])
-            print a
+            print vals
 
         time.sleep(.2)
     pi.i2c_close(h)
