@@ -85,14 +85,14 @@ class plane():
             self.throttleDown()
 
     def updateControls(self, yaw, pitch, throttle):
-        yawOut = 1500 + yaw * self.RANGE / 4
-        pitchOut = 1500 + pitch * self.RANGE / 4
-        throttleOut = 1000 + throttle * self.THROTTLE_RANGE / 4
+        yawOut = 1500 + yaw * self.RANGE / 4.0
+        pitchOut = 1500 + pitch * self.RANGE / 4.0
+        throttleOut = 1000 + throttle * self.THROTTLE_RANGE / 4.0
 
         for i in range(4):
-            self.pi.set_servo_pulsewidth(self.YAW, yawOut)
-            self.pi.set_servo_pulsewidth(self.PITCH, pitchOut)
-            self.pi.set_servo_pulsewidth(self.THROTTLE, throttleOut)
+            self.pi.set_servo_pulsewidth(self.YAW, int(yawOut))
+            self.pi.set_servo_pulsewidth(self.PITCH, int(pitchOut))
+            self.pi.set_servo_pulsewidth(self.THROTTLE, int(throttleOut))
             (yawOut, pitchOut, throttleOut) = (4 * yawOut, 4 * pitchOut, 4 * throttleOut)
 
 
