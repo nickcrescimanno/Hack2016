@@ -254,7 +254,7 @@ def calibrateMPU6050(dest1, dest2):
     #  writeByte(MPU6050_ADDRESS, YG_OFFS_USRL, data[3])
     #  writeByte(MPU6050_ADDRESS, ZG_OFFS_USRH, data[4])
     #  writeByte(MPU6050_ADDRESS, ZG_OFFS_USRL, data[5])
-
+    dest1=[0, 0, 0]
     dest1[0] = 1.0 * gyro_bias[0] / 1.0 * gyrosensitivity  # construct gyro bias in deg/s for later manual subtraction
     dest1[1] = 1.0 * gyro_bias[1] / 1.0 * gyrosensitivity
     dest1[2] = 1.0 * gyro_bias[2] / 1.0 * gyrosensitivity
@@ -308,6 +308,7 @@ def calibrateMPU6050(dest1, dest2):
     #  writeByte(MPU6050_ADDRESS, ZA_OFFSET_L_TC, data[5])
 
     # Output scaled accelerometer biases for manual subtraction in the main program
+    dest2=[0, 0, 0]
     dest2[0] = 1.0 * accel_bias[0] / 1.0 * accelsensitivity
     dest2[1] = 1.0 * accel_bias[1] / 1.0 * accelsensitivity
     dest2[2] = 1.0 * accel_bias[2] / 1.0 * accelsensitivity
