@@ -91,13 +91,13 @@ class plane():
         a.close()
 
     def trim(self, button):
-        if (button==0):
+        if (button==4):
             self.PITCH_CENTER-=50
-        if button==1:
+        if button==5:
             self.PITCH_CENTER += 50
-        if button == 2:
+        if button == 6:
             self.YAW_CENTER -= 50
-        if button == 3:
+        if button == 7:
             self.YAW_CENTER += 50
 
     def updateControls(self):
