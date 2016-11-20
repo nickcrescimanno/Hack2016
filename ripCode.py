@@ -240,8 +240,7 @@ def calibrateMPU6050(dest1, dest2):
         accel_bias[2] += accelsensitivity
 
     # Construct the gyro biases for push to the hardware gyro bias registers, which are reset to zero upon device startup
-    data[0] = (-gyro_bias[
-        0] / 4 >> 8) & 0xFF  # Divide by 4 to get 32.9 LSB per deg/s to conform to expected bias input format
+    data[0] = (-gyro_bias[0] / 4 >> 8) & 0xFF  # Divide by 4 to get 32.9 LSB per deg/s to conform to expected bias input format
     data[1] = (-gyro_bias[0] / 4) & 0xFF  # Biases are additive, so change sign on calculated average gyro biases
     data[2] = (-gyro_bias[1] / 4 >> 8) & 0xFF
     data[3] = (-gyro_bias[1] / 4) & 0xFF
