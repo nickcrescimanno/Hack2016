@@ -1,3 +1,4 @@
+from readin import ControllerInput
 import pigpio
 import time
 
@@ -51,7 +52,10 @@ class plane():
         while True:
             pos = self.readBytes(0x3B, 6, 1)
             (z, y, x) = (pos[0], pos[1], pos[2])
+            print z
             self.stableZAccel(z)
+            a = ControllerInput()
+            print(a.poll())
             # self.stableZAccel(y)
             # self.stableZAccel(x)
             time.sleep(.1)
