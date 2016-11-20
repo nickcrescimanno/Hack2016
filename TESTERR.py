@@ -1,3 +1,4 @@
+import pigpio
 pi = pigpio.pi()  # open local Pi
 
 foundIt=False
