@@ -3,6 +3,8 @@ import pigpio
 import time
 
 class plane():
+    THROTTLE_RANGE = 800
+    RANGE = 50
     MAX=2500-400
     AVG=1500
     MIN=500+400
@@ -54,9 +56,10 @@ class plane():
             pos = self.readBytes(0x3B, 6, 1)
             (z, y, x) = (pos[0], pos[1], pos[2])
             print z
-            self.stableZAccel(z)
+            #self.stableZAccel(z)
             a = ControllerInput()
             a,b,c,d=a.poll()
+            self.updateControls(a,b,c)
             print a,b,c,d
             # self.stableZAccel(y)
             # self.stableZAccel(x)
@@ -80,23 +83,15 @@ class plane():
         elif (z > -1.3):
             self.throttleDown()
 
-    def throttleUp(self):
-        self.pi.set_servo_pulsewidth(self.THROTTLE, self.MAX)
+    def updateControls(self, yaw, pitch ,throttle):
+        yawOut=1500+yaw*self.RANGE
+        pitchOut = 1500 + pitch * self.RANGE
+        throttleOut = 1000 + throttle * self.THROTTLE_RANGE
+        self.pi.set_servo_pulsewidth(self.YAW, yawOut)
+        self.pi.set_servo_pulsewidth(self.PITCH, pitchOut)
+        self.pi.set_servo_pulsewidth(self.THROTTLE, throttleOut)
 
-    def throttleDown(self):
-        self.pi.set_servo_pulsewidth(self.THROTTLE, self.MIN)
 
-    def pitchUp(self):
-        self.pi.set_servo_pulsewidth(self.PITCH, self.MAX)
-
-    def pitchDown(self):
-        self.pi.set_servo_pulsewidth(self.PITCH, self.MIN)
-
-    def yawUp(self):
-        self.pi.set_servo_pulsewidth(self.YAW, self.MAX)
-
-    def yawDown(self):
-        self.pi.set_servo_pulsewidth(self.YAW, self.MIN)
 
 
 aero = plane()

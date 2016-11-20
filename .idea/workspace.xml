@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="readin.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="readin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state relative-caret-position="103">
+              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -125,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Aeroplane.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Aeroplane.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Aeroplane.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+            <state relative-caret-position="1530">
+              <caret line="90" column="47" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -165,8 +165,8 @@
         <option value="$PROJECT_DIR$/i2c_ADXL345.py" />
         <option value="$PROJECT_DIR$/pwmTester.py" />
         <option value="$PROJECT_DIR$/ripCode.py" />
-        <option value="$PROJECT_DIR$/Aeroplane.py" />
         <option value="$PROJECT_DIR$/readin.py" />
+        <option value="$PROJECT_DIR$/Aeroplane.py" />
       </list>
     </option>
   </component>
@@ -661,6 +661,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/readin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/morse_code.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -673,19 +681,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Aeroplane.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+        <state relative-caret-position="1530">
+          <caret line="90" column="47" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
