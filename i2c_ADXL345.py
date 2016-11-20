@@ -3,7 +3,7 @@
 # i2c_ADXL345.py
 # 2015-04-01
 # Public Domain
-
+import binascii
 import time
 import struct
 import sys
@@ -26,14 +26,19 @@ h = pi.i2c_open(BUS, ADXL345_I2C_ADDR)
 if h >= 0:  # Connected OK?
 
     # Initialise ADXL345.
-    # pi.i2c_write_byte_data(h, 0x2d, 0)  # POWER_CTL reset.
-    # pi.i2c_write_byte_data(h, 0x2d, 8)  # POWER_CTL measure.
-    # pi.i2c_write_byte_data(h, 0x31, 0)  # DATA_FORMAT reset.
-    # pi.i2c_write_byte_data(h, 0x31, 11) # DATA_FORMAT full res +/- 16g.
+    pi.i2c_write_byte_data(h, 0x6B, 0)  # wake up mpu6050
+    # pi.i2c_write_byte_data(h, 0x2d, 8)  # wake up mpu6050
+    # pi.i2c_write_byte_data(h, 0x1C, 0)  # set sensitivity
+    pi.i2c_write_byte_data(h, 0xC, 0x10) # DATA_FORMAT res +/- 2g.
 
     read = 0
 
     start_time = time.time()
+
+    (s, b) = pi.i2c_read_i2c_block_data(h, 0x1C, 1)
+    print binascii.hexlify(bytearray(b))
+    
+
 
     while (time.time() - start_time) < RUNTIME:
 
@@ -43,12 +48,15 @@ if h >= 0:  # Connected OK?
 
         # < = little endian
 
-        (s, b) = pi.i2c_read_i2c_block_data(h, 0x59, 6)
+        (s, b) = pi.i2c_read_i2c_block_data(h, 0x3B, 6)
+
+	time.sleep(.1)
 
         if s >= 0:
-            print len(b)
+	    #print binascii.hexlify(b) 
+           
             (x, y, z) = struct.unpack('<3h', buffer(b))
-            print("{} {} {}".format(x, y, z))
+            print("x: {} y: {} z: {}".format(x, y, z))
             read += 1
 
         else:
