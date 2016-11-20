@@ -43,11 +43,12 @@ def readBytes(address, count):
     index = 0
     for x in z:
         print x
-    for i in range(0, count-1, 2):
-        print "I"
-        print i
-        bites[index] = getVal(z[i], z[i+1])
-        index+=1
+    first = 0
+    second = 1
+    while second < count:
+        bites[index] = getVal(z[first], z[second])
+        first+=1
+        second+=1
     return bites
 
 def main():
