@@ -215,7 +215,7 @@ def calibrateMPU6050(dest1, dest2):
         data = readBytes(FIFO_R_W, 12, 1)  # read data for averaging
         for x in xrange(3):
             accel_temp[x] = data[x]
-        for x in xrange(3, 5, 3):
+        for x in xrange(3, 5, 1):
             gyro_temp[x] = data[x]
 
         accel_bias[0] += accel_temp[0]  # Sum individual signed 16-bit biases to get accumulated signed 32-bit biases
