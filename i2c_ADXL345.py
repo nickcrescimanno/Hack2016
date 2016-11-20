@@ -39,14 +39,14 @@ if h >= 0:  # Connected OK?
 
         time.sleep(.1)
 
-    if s >= 0:
-        # print binascii.hexlify(b)
-        (x, y, z) = struct.unpack('<3h', buffer(b))
-        print("x: {} y: {} z: {}".format(x, y, z))
-        print int("0xdeadbeef", 0)
+        if s >= 0:
+            # print binascii.hexlify(b)
+            (x, y, z) = struct.unpack('<3h', buffer(b))
+            print("x: {} y: {} z: {}".format(x, y, z))
+            print int("0xdeadbeef", 0)
 
-    else:
-        print "WE GOT AN ERROR"
+        else:
+            print "WE GOT AN ERROR"
 
 pi.i2c_close(h)
 
