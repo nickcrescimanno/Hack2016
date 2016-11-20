@@ -54,6 +54,7 @@ class plane():
     """Adjusts Servo to Degree specified by user"""
 
     def test(self):
+        d=0
         a = ControllerInput()
         while True:
             for i in xrange(4):
