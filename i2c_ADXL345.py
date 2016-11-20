@@ -50,6 +50,7 @@ if h >= 0:  # Connected OK?
             print "WE GOT AN ERROR"
         a=b[0] << b[1]
         print type(a)
+        print a
 pi.i2c_close(h)
 
 pi.stop()
