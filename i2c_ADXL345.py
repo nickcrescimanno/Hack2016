@@ -34,9 +34,9 @@ def getVal(first, second):
 def writeByte(address, hval):
     pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
 
-def readBytes(address):
+def readBytes(address, count):
     bites = []
-    z = pi.i2c_read_i2c_block_data(h, address, 2)
+    z = pi.i2c_read_i2c_block_data(h, address, count)
     count=0
     for i in range(0, count, 2):
         bites[i] = getVal(z[i], z[i+1])
