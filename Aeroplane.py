@@ -99,4 +99,4 @@ class plane():
 
 
 aero = plane()
-aero.test
+aero.test()
