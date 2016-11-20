@@ -41,10 +41,10 @@ if h >= 0:  # Connected OK?
 
         if s >= 0:
             # print binascii.hexlify(b)
-            (z) = struct.unpack('H', buffer(b))
+            (z) = struct.unpack('h', buffer(b))
             # (x, y, z, q, w) = (float (x)/16384.0, float (y)/16384.0, float (z/16384.0), float (q/16384.0), float (w/16384.0))
             # print("x: {} y: {} z: {}? {}? {}? ".format(x, y, z, q, w))
-            (z) = (float(z/16384.0))
+            (z) = (float(z / 16384.0))
             print("z:{}".format(z))
 
         else:
