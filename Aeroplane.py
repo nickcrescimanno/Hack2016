@@ -5,7 +5,7 @@ import time
 
 class plane():
     THROTTLE_RANGE = 800
-    RANGE = 50
+    RANGE = 200
     MAX = 2500 - 400
     AVG = 1500
     MIN = 500 + 400
@@ -54,21 +54,23 @@ class plane():
     def test(self):
         a = ControllerInput()
         while True:
-            print "!"
-            pos = self.readBytes(0x3B, 6, 1)
-            (z, y, x) = (pos[0], pos[1], pos[2])
-            print z
-<<<<<<< HEAD
-            # self.stableZAccel(z)
-=======
-            # self.stableZAccel(z)            
->>>>>>> 33dd4f8cd5b8db5a780fbadff56f963cd3493db0
-            yaw, pitch, throttle, d = a.poll()
-            # self.updateControls(yaw, pitch, throttle)
-            print yaw, pitch, throttle, d
-            # self.stableZAccel(y)
-            # self.stableZAccel(x)
-            time.sleep(.1)
+            for i in xrange(4):
+                print "!"
+                pos = self.readBytes(0x3B, 6, 1)
+                (z, y, x) = (pos[0], pos[1], pos[2])
+                print z
+                # self.stableZAccel(z)
+                yaw, pitch, throttle, d = a.poll()
+                self.yaw = yaw * self.RANGE
+                self.pitchOut = pitch * self.RANGE
+                self.throttleOut = throttle * self.THROTTLE_RANGE
+                self.updateControls(yaw, pitch, throttle)
+                print yaw, pitch, throttle, d
+                # self.stableZAccel(y)
+                # self.stableZAccel(x)
+                time.sleep(.01)
+                #self.incrementControls(yaw, pitch, throttle)
+
         a.close()
 
 
@@ -92,14 +94,15 @@ class plane():
             self.throttleDown()
 
     def updateControls(self, yaw, pitch, throttle):
-        yawOut = 1500 + yaw * self.RANGE
-        pitchOut = 1500 + pitch * self.RANGE
-        throttleOut = 1000 + throttle * self.THROTTLE_RANGE
 
-        self.pi.set_servo_pulsewidth(self.YAW, int(yawOut))
-        self.pi.set_servo_pulsewidth(self.PITCH, int(pitchOut))
-        self.pi.set_servo_pulsewidth(self.THROTTLE, int(throttleOut))
-        (yawOut, pitchOut, throttleOut) = (yawOut, pitchOut, throttleOut)
+        if(yawNew > yawThreshold )
+        self.yaw+=1
+        self.throttle+=1;
+        self.pitch+=1
+
+        self.pi.set_servo_pulsewidth(self.YAW, int(self.yaw))
+        self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitch))
+        self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttle))
 
 
 
