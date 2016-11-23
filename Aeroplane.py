@@ -2,40 +2,67 @@ from readin import ControllerInput
 import pigpio
 import time
 
-
+"""Class used To Operate Plane"""
 class plane():
+    # RANGE OF THROTTLE SERVO
     THROTTLE_RANGE = 800
+    # RANGE FOR YAW AND PITCH OUT SERVOS
     RANGE = 200
+    # MAXIMUM THROTTLE SERVO SETTING
     MAX = 2500 - 400
-    AVG = 1500
+    # MINIMUM THROTTLE SERVO SETTING
     MIN = 500 + 400
+    # GPIO PIN OF PITCH SERVO
     PITCH = 10
+    # GPIO PIN OF YAW SERVO
     YAW = 9
+    # GPIO PIN OF THROTTLE SERVO
     THROTTLE = 11
-    pi = 0
-    h = 2
+    # raspberry pi pigpio object, API used to interface with Raspberry Pi
+    rasp_pi = 0
+    # I2C Port
+    I2C = 2
 
+    """Connect to API, establishes connections to THROTTLE, PITCH, and YAW controls and
+    initializes the I2C connection
+    """
     def __init__(self):
-        self.pi = pigpio.pi()  # connect to local Pi
-        self.pi.set_mode(self.THROTTLE, pigpio.OUTPUT)  # GPIO 17 as output
-        self.pi.set_mode(self.PITCH, pigpio.OUTPUT)  # GPIO 17 as output
-        self.pi.set_mode(self.YAW, pigpio.OUTPUT)  # GPIO 17 as output
-        self.h = self.pi.i2c_open(1, 0x68)
+        self.rasp_pi = pigpio.pi()  # connect to local Pi
+        self.rasp_pi.set_mode(self.THROTTLE, pigpio.OUTPUT)  # GPIO 17 as output
+        self.rasp_pi.set_mode(self.PITCH, pigpio.OUTPUT)  # GPIO 17 as output
+        self.rasp_pi.set_mode(self.YAW, pigpio.OUTPUT)  # GPIO 17 as output
+        self.I2C = self.rasp_pi.i2c_open(1, 0x68)
 
+    """Bitshifts two bits and scales the result to return the z accelation
+    @param first
+        first bit to shift
+    @param second
+        second bit to shift
+    @return z_accel
+        z axis acceleration of plane"""
     def getVal(self, first, second):
         val = self.readVal(first, second)
         val = val / 16384.0
         return val
 
+    """Bitshifts two bits and returns the integer value
+    @param first
+        first bit to shift
+    @param second
+        second bit to shift
+    @returns bit_result
+        the shifted bit result"""
     def readVal(self, first, second):
-        val = (first << 8) | second
-        if val >= 2 ** 15:
-            val = val - 2 ** 16 - 1  # bit shi
-        return val
+        bit_result = (first << 8) | second
+        if bit_result >= 2 ** 15:
+            bit_result = bit_result - 2 ** 16 - 1  # bit shift
+        return bit_result
 
+    """Accesses an address, shifts a byte array of size {@code count} to an array of values.
+    """
     def readBytes(self, address, count, isData):
         bites = []
-        (s, z) = self.pi.i2c_read_i2c_block_data(self.h, address, count)
+        (s, z) = self.rasp_pi.i2c_read_i2c_block_data(self.I2C, address, count)
         index = 0
         first = 0
         second = 1
@@ -74,11 +101,10 @@ class plane():
         a.close()
 
     def updateControls(self):
-        self.pi.set_servo_pulsewidth(self.YAW, int(self.yawOut))
-        self.pi.set_servo_pulsewidth(self.PITCH, int(self.pitchOut))
-        self.pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttleOut))
+        self.rasp_pi.set_servo_pulsewidth(self.YAW, int(self.yawOut))
+        self.rasp_pi.set_servo_pulsewidth(self.PITCH, int(self.pitchOut))
+        self.rasp_pi.set_servo_pulsewidth(self.THROTTLE, int(self.throttleOut))
 
-    def smooth(self, yaw, pitch,throttle):
 
 
 aero = plane()
