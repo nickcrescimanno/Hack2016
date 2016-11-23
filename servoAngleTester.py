@@ -13,4 +13,4 @@ def test():
     while True:
         pi.set_servo_pulsewidth(input("ENTER PIN"), degree)
 
-test();
+test()
