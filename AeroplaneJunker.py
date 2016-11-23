@@ -74,14 +74,14 @@ class plane():
         Then resulting decimal values are scaled to return accurate acceleration
     else:
         Resulting Data is not scaled
-        @param address
-            address to read block data from
-        @param count
-            length of resulting decimal array
-        @param isData
-            boolean of whether byte array contains accelerationData
-        @return dec_values
-            array of decimal values converted from byte array"""
+    @param address
+        address to read block data from
+    @param count
+        length of resulting decimal array
+    @param isData
+        boolean of whether byte array contains accelerationData
+    @return dec_values
+        array of decimal values converted from byte array"""
     def read_bytes(self, address, count, isAccelData):
         dec_values = []
         (s, block_data) = self.rasp_pi.i2c_read_i2c_block_data(self.I2C, address, count)
@@ -155,7 +155,7 @@ class plane():
         controller = ControllerInput()
         while True:
             """Print Acceleration Data"""
-            accel_data = self.read_bytes(address=self.ACCEL_ADDRESS, count=6, isAccelData=True)
+            accel_data = self.read_bytes(self.ACCEL_ADDRESS, 6, True)
             (z, y, x) = (accel_data[0], accel_data[1], accel_data[2])
             print z,y,x
             """Monitor Controller Input"""
