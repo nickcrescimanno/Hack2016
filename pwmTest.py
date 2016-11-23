@@ -1,7 +1,7 @@
 import sys
 import time
 import pigpio
-
+"""USED TO TEST ALL PWM SERVO DEGREES"""
 class motor():
 
     pause_time = .01

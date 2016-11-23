@@ -15,8 +15,7 @@ class calc():
         val = val / 16384.0
         return val
 
-    def writeByte(self, address, hval):
-        pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
+    def writeByte(self, address, hval):        pi.i2c_write_byte_data(h, address, hval)  # wake up mpu6050
 
     def readBytes(self, address, count):
         bites = []
