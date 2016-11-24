@@ -4,6 +4,7 @@ import time
 
 
 class plane():
+    """---Constants for Controls---"""
     # RANGE OF THROTTLE SERVO
     THROTTLE_RANGE = 800
     # CENTER YAW POSITION FOR SERVO
@@ -16,6 +17,8 @@ class plane():
     MAX = 2500 - 400
     # MINIMUM THROTTLE SERVO SETTING
     MIN = 500 + 400
+
+    """---Constants for Pi board---"""
     # GPIO PIN OF PITCH SERVO
     PITCH_PIN = 10
     # GPIO PIN OF YAW SERVO
@@ -30,7 +33,7 @@ class plane():
     I2C_ADDRESS = 0x68
     # BUS NUMBER
     BUS_NUM = 1
-    # ACCEL
+    # Z ACCELERATION ADDRESS
     ACCEL_ADDRESS = 0x3B
 
     """Connect to API, establishes connections to THROTTLE, PITCH, and YAW controls and
@@ -38,9 +41,9 @@ class plane():
     """
     def __init__(self):
         self.rasp_pi = pigpio.pi()  # connect to local Pi
-        self.rasp_pi.set_mode(self.THROTTLE_PIN, pigpio.OUTPUT)  # GPIO 17 as output
-        self.rasp_pi.set_mode(self.PITCH_PIN, pigpio.OUTPUT)  # GPIO 17 as output
-        self.rasp_pi.set_mode(self.YAW_PIN, pigpio.OUTPUT)  # GPIO 17 as output
+        self.rasp_pi.set_mode(self.THROTTLE_PIN, pigpio.OUTPUT)  
+        self.rasp_pi.set_mode(self.PITCH_PIN, pigpio.OUTPUT)
+        self.rasp_pi.set_mode(self.YAW_PIN, pigpio.OUTPUT)
         self.I2C = self.rasp_pi.i2c_open(self.BUS_NUM, self.I2C_ADDRESS)
 
     """Bit shifts two bits and scales the result to return the z accelation
