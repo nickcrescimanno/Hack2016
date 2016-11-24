@@ -1,4 +1,3 @@
-from calc import calc
 import pigpio
 import time
 
