@@ -142,7 +142,7 @@ class plane():
         new_yaw = self.adjust_yaw(new_yaw)
         """Update Pitch"""
         new_pitch = self.adjust_pitch(new_pitch)
-        """update Throttle"""
+        """Update Throttle"""
         new_throttle = 1000 + new_throttle * self.THROTTLE_RANGE
         """Send new values to rasp_pi"""
         self.rasp_pi.set_servo_pulsewidth(self.YAW_PIN, int(new_yaw))
